@@ -1,26 +1,34 @@
 #!/bin/bash
 
-export git=""
-export project=""
+export GIT=""
+export PROJECT=""
 
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -g|--git) git="$2"; shift ;;
-        -p|--project) project=1 ;;
+        -g|--git) GIT="$2"; shift ;;
+        -p|--project) PROJECT="$1" ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
 done
 
-if [[ "$git" ]] 
+if [[ "$GIT" ]] 
 then
-    echo "git: $git"
-    echo "project: $project"
+    echo "git: $GIT"
+    echo "project: $PROJECT"
 else
     echo "A variável não existe"
     exit
 fi
 
-echo "git: $git"
-echo "project: $project"
+cd ~/
+sudo apt update
+python3 -V
+sudo apt install python3-pip
+sudo apt install python3-venv
+python3 -m venv venv_$PROJECT
+source venv_$PROJECT/bin/activate
+git clone $GIT ~/$PROJECT
+pip install -r ~/$PROJECT/requirements.txt
+
