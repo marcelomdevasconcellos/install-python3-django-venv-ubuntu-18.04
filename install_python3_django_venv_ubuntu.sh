@@ -25,11 +25,18 @@ fi
 
 cd ~/
 sudo apt update
+sudo apt autoremove
 python3 -V
 sudo apt install python3-pip
 sudo apt install python3-venv
+sudo apt-get install python3-psycopg2
+pip install -r requirements.txt 
+sudo apt-get install libpq-dev python-dev
+
+
 python3 -m venv venv_$PROJECT
 source venv_$PROJECT/bin/activate
+rm -rf ~/$PROJECT
 git clone $GIT ~/$PROJECT
 pip install -r ~/$PROJECT/requirements.txt
 
