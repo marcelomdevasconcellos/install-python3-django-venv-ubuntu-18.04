@@ -1,16 +1,18 @@
 #!/bin/bash
 
-export GIT=""
-export PROJECT=""
+export GIT="$2"
+export PROJECT="$4"
 
+echo "$GIT"
+echo "$PROJECT"
 
-while [[ "$#" -gt 0 ]]; do
-    case $1 in
-        -g|--git) GIT="$2"; shift ;;
-        -p|--project) PROJECT="$1"; shift ;;
-    esac
-    shift
-done
+#while [[ "$#" > 0 ]]; do
+#    case $1 in
+#        -g|--git) GIT="$2"; shift ;;
+#        -p|--project) PROJECT="$1";  shift;;
+#esac
+#    shift
+#done
 
 if [[ "$GIT" ]] 
 then
