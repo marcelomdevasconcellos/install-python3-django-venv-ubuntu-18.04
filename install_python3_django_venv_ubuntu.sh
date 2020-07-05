@@ -30,8 +30,7 @@ python3 -V
 sudo apt install python3-pip
 sudo apt install python3-venv
 sudo apt-get install python3-psycopg2 python-psycopg2-doc
-sudo apt install postgresql postgresql-contrib
-pip install -r requirements.txt 
+pip3 install wheel
 sudo apt-get install libpq-dev python-dev
 
 
@@ -39,5 +38,14 @@ python3 -m venv venv_$PROJECT
 source venv_$PROJECT/bin/activate
 rm -rf ~/$PROJECT
 git clone $GIT ~/$PROJECT
-pip install -r ~/$PROJECT/requirements.txt
+pip3 install -r ~/$PROJECT/requirements.txt
+
+# Install PostgreSQL on Ubuntu 18.04 Server
+# https://www.howtoforge.com/how-to-install-postgresql-and-pgadmin4-on-ubuntu-1804-lts/
+
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+sudo apt update
+sudo apt -y install postgresql postgresql-contrib
+sudo apt install pgadmin4 pgadmin4-apache2 -y
 
