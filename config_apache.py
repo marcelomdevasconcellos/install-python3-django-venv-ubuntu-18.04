@@ -16,8 +16,7 @@ def read_file(filename):
 
 
 APACHE_CONFIG = """
-    ServerName %(server_name)s
-
+    
     Alias /static /home/static
     <Directory /home/static>
         Require all granted

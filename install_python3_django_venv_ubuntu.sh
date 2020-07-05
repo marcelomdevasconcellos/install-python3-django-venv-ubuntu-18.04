@@ -37,6 +37,7 @@ sudo ufw delete allow 8000
 sudo ufw allow 'Apache Full'
 sudo apache2ctl configtest
 sudo systemctl restart apache2
+pg_ctlcluster 12 main start
 
 # Install PostgreSQL on Ubuntu 18.04 Server
 # https://www.howtoforge.com/how-to-install-postgresql-and-pgadmin4-on-ubuntu-1804-lts/
