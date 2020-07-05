@@ -1,8 +1,7 @@
 import sys, getopt
 
 def main(argv):
-   inputfile = ''
-   outputfile = ''
+   project = ''
    try:
       opts, args = getopt.getopt(argv,"hp:",["project=",])
    except getopt.GetoptError:
@@ -14,7 +13,7 @@ def main(argv):
          sys.exit()
       elif opt in ("-p", "--project"):
          project = arg
-   print('Project is {}' % project)
+   print('Project is %s' % project)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
