@@ -18,11 +18,11 @@ python3 -V
 sudo apt install python3-pip
 sudo apt install python3-venv
 sudo apt-get install apache2 libapache2-mod-wsgi-py3
-sudo apt-get install python3-psycopg2 python-psycopg2-doc
 pip3 install wheel
 sudo apt-get install libpq-dev python-dev
 python3 -m venv /home/venv_$PROJECT
 source /home/venv_$PROJECT/bin/activate
+pip3 install psycopg2-binary
 rm -rf /home/$PROJECT
 git clone $GIT /home/$PROJECT
 pip3 install -r /home/$PROJECT/requirements.txt
