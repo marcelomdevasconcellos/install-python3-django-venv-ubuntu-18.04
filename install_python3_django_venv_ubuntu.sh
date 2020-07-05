@@ -35,12 +35,6 @@ cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/00
 sudo chown www-data:www-data /home/$PROJECT
 sudo chown www-data:www-data /home/static
 sudo chown www-data:www-data /home/media
-python3 config_apache.py -p $PROJECT
-sudo ufw delete allow 8000
-sudo ufw allow 'Apache Full'
-sudo apache2ctl configtest
-sudo systemctl restart apache2
-pg_ctlcluster 12 main start
 
 # Install PostgreSQL on Ubuntu 18.04 Server
 # https://www.howtoforge.com/how-to-install-postgresql-and-pgadmin4-on-ubuntu-1804-lts/
@@ -74,31 +68,11 @@ deactivate
 sudo chown -R www-data:www-data /var/lib/pgadmin4/
 sudo chown -R www-data:www-data /var/log/pgadmin4/
 sudo /etc/init.d/postgresql start
+pg_ctlcluster 12 main start
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
 
-# sudo adduser --disabled-password tironacional
-# sudo -u tironacional psql "ALTER USER tironacional PASSWORD 'tironacional';"
-
-
-
-
-# sudo nano /etc/apache2/sites-available/pgadmin4.conf
-
-# <VirtualHost *>
-#     ServerName your_server_ip
-
-#     WSGIDaemonProcess pgadmin processes=1 threads=25 python-home=/home/venv_pgadmin4
-#     WSGIScriptAlias /pgadmin4 /home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/pgAdmin4.wsgi
-
-#     <Directory "/home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/">
-#         WSGIProcessGroup pgadmin
-#         WSGIApplicationGroup %{GLOBAL}
-#         Require all granted
-#     </Directory>
-# </VirtualHost>
-
-
-
-
-
-
+python3 config_apache.py -p $PROJECT
+sudo ufw delete allow 8000
+sudo ufw allow 'Apache Full'
+sudo apache2ctl configtest
+sudo systemctl restart apache2
