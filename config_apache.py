@@ -15,7 +15,7 @@ def read_file(filename):
     return content
 
 
-APACHE_CONFIG = """
+PGADMIN_CONFIG = """
     
     WSGIDaemonProcess pgadmin processes=1 threads=25 python-home=/home/venv_pgadmin4
     WSGIScriptAlias /pgadmin4 /home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/pgAdmin4.wsgi
@@ -25,6 +25,10 @@ APACHE_CONFIG = """
         WSGIApplicationGroup %{GLOBAL}
         Require all granted
     </Directory>
+
+"""
+
+APACHE_CONFIG = """
 
     Alias /static /home/static
     <Directory /home/static>
@@ -74,11 +78,12 @@ def main(argv):
         if os.path.isfile('/home/%s/%s/wsgi.py' % (project, app)):
             data['wsgi_path'] = '/home/%s/%s/wsgi.py' % (project, app)
     if data['wsgi_path']:
+        new_content = PGADMIN_CONFIG + APACHE_CONFIG % data
         save_file(
             filename, 
             content.replace(
                 '</VirtualHost>', 
-                APACHE_CONFIG % data)
+                new_content)
             )
         print('Apache configured!')
     else:
