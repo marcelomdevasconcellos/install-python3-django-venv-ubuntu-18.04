@@ -30,18 +30,18 @@ mkdir /home/static
 mkdir /home/media
 cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default_backup
 sudo chown :www-data /home/$PROJECT
+python3 config_apache.py -p $PROJECT
 sudo ufw delete allow 8000
 sudo ufw allow 'Apache Full'
 sudo apache2ctl configtest
 sudo systemctl restart apache2
-python3 config_apache.py -p $PROJECT
 
 # Install PostgreSQL on Ubuntu 18.04 Server
 # https://www.howtoforge.com/how-to-install-postgresql-and-pgadmin4-on-ubuntu-1804-lts/
 
-# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-# sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
-# sudo apt update
-# sudo apt -y install postgresql postgresql-contrib
-# sudo apt install pgadmin4 pgadmin4-apache2 -y
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+sudo apt update
+sudo apt -y install postgresql postgresql-contrib
+sudo apt install pgadmin4 pgadmin4-apache2 -y
 
