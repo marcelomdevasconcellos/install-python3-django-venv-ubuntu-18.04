@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export GIT="$2"
-export PROJECT="$4"
+export GIT="$1"
+export PROJECT="$2"
 
 echo "$GIT"
 echo "$PROJECT"
