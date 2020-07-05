@@ -13,7 +13,7 @@ def main(argv):
          print('config_apache.py -p <project>')
          sys.exit()
       elif opt in ("-p", "--project"):
-   print('Project is {}' % project)
+         print('Project is {}' % project)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
