@@ -7,8 +7,7 @@ export PROJECT=""
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -g|--git) GIT="$2"; shift ;;
-        -p|--project) PROJECT="$1" ;;
-        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+        -p|--project) PROJECT="$1"; shift ;;
     esac
     shift
 done
