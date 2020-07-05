@@ -3,8 +3,10 @@ Install Python3, Django in Venv on Ubuntu-18.04
 
 Usage:
 
-`./script.sh -g git_url -p project_name`
+`./install_python3_django_venv_ubuntu.sh -g git_url -p project_name`
 
 # OR:
 
-`./script.sh --git git_url --project project_name`
+`./install_python3_django_venv_ubuntu.sh --git git_url --project project_name`
+
+
