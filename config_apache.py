@@ -48,11 +48,11 @@ def main(argv):
         print('config_apache.py -p <project>')
         sys.exit(2)
     for opt, arg in opts:
-    if opt == '-h':
-        print('config_apache.py -p <project>')
-        sys.exit()
-    elif opt in ("-p", "--project"):
-        project = arg
+        if opt == '-h':
+            print('config_apache.py -p <project>')
+            sys.exit()
+        elif opt in ("-p", "--project"):
+            project = arg
     print('Project is %s' % project)
     filename = '/etc/apache2/sites-available/000-default.conf'
     content = read_file(filename)
