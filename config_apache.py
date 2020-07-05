@@ -17,6 +17,15 @@ def read_file(filename):
 
 APACHE_CONFIG = """
     
+    WSGIDaemonProcess pgadmin processes=1 threads=25 python-home=/home/venv_pgadmin4
+    WSGIScriptAlias /pgadmin4 /home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/pgAdmin4.wsgi
+
+    <Directory "/home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/">
+        WSGIProcessGroup pgadmin
+        WSGIApplicationGroup %{GLOBAL}
+        Require all granted
+    </Directory>
+
     Alias /static /home/static
     <Directory /home/static>
         Require all granted
