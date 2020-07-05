@@ -23,7 +23,7 @@ else
     exit
 fi
 
-cd ~/
+cd /home
 sudo apt update
 sudo apt autoremove
 python3 -V
@@ -36,10 +36,10 @@ sudo apt-get install libpq-dev python-dev
 
 
 python3 -m venv venv_$PROJECT
-source venv_$PROJECT/bin/activate
-rm -rf ~/$PROJECT
-git clone $GIT ~/$PROJECT
-pip3 install -r ~/$PROJECT/requirements.txt
+source /home/venv_$PROJECT/bin/activate
+rm -rf /home/$PROJECT
+git clone $GIT /home/$PROJECT
+pip3 install -r /home/$PROJECT/requirements.txt
 
 # Install PostgreSQL on Ubuntu 18.04 Server
 # https://www.howtoforge.com/how-to-install-postgresql-and-pgadmin4-on-ubuntu-1804-lts/
