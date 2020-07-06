@@ -51,9 +51,9 @@ sudo chown -R $PROJECT:$PROJECT /var/lib/pgadmin4
 sudo chown -R $PROJECT:$PROJECT /var/log/pgadmin4
 python3 -m venv /home/venv_pgadmin4
 source /home/venv_pgadmin4/bin/activate
-wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v4.9/pip/pgadmin4-4.9-py2.py3-none-any.whl
+wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v4.23/pip/pgadmin4-4.23-py3-none-any.whl
 python -m pip install wheel
-python -m pip install pgadmin4-4.9-py2.py3-none-any.whl
+python -m pip install pgadmin4-4.23-py3-none-any.whl
 echo "LOG_FILE = '/var/log/pgadmin4/pgadmin4.log'" >> /home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/config_local.py
 echo "SQLITE_PATH = '/var/lib/pgadmin4/pgadmin4.db'" >> /home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/config_local.py
 echo "SESSION_DB_PATH = '/var/lib/pgadmin4/sessions'" >> /home/venv_pgadmin4/lib/python3.6/site-packages/pgadmin4/config_local.py
