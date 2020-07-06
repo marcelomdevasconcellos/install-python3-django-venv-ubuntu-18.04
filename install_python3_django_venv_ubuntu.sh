@@ -66,15 +66,12 @@ sudo chown -R www-data:www-data /var/lib/pgadmin4/
 sudo chown -R www-data:www-data /var/log/pgadmin4/
 sudo /etc/init.d/postgresql start
 pg_ctlcluster 12 main start
-sudo -u postgres psql -c "CREATE ROLE $PROJECT;"
-sudo -u postgres psql -c "ALTER USER $PROJECT PASSWORD '$PROJECT';"
+sudo -u postgres psql -c "CREATE ROLE $PROJECT PASSWORD '$PROJECT' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
 sudo -u postgres psql -c "CREATE DATABASE $PROJECT;"
 sudo -u postgres psql -c "ALTER DATABASE $PROJECT OWNER TO $PROJECT;"
-sudo -u postgres psql -c "ALTER ROLE $PROJECT WITH LOGIN;"
 python3 config_apache.py -p $PROJECT
 sudo ufw delete allow 8000
 sudo ufw allow 'Apache Full'
 sudo apache2ctl configtest
 sudo systemctl restart apache2
 sudo dpkg-reconfigure locales
-
