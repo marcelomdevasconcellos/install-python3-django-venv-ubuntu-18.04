@@ -5,10 +5,10 @@ export PROJECT="$2"
 
 if [[ "$GIT" ]] 
 then
-    echo "git: $GIT"
-    echo "project: $PROJECT"
+    echo "Git: $GIT"
+    echo "Project: $PROJECT"
 else
-    echo "A variável não existe"
+    echo "Usage: ./install_python3_django_venv_ubuntu.sh <git_url> <project_name>"
     exit
 fi
 
