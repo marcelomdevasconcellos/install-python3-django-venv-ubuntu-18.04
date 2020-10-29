@@ -35,7 +35,7 @@ APACHE_CONFIG = """
         Require all granted
     </Directory>
 
-    Alias /static /home/media
+    Alias /media /home/media
     <Directory /home/media>
         Require all granted
     </Directory>
