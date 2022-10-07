@@ -49,6 +49,7 @@ APACHE_CONFIG = """
     WSGIDaemonProcess %(project)s python-home=/home/venv_%(project)s python-path=/home/%(project)s
     WSGIProcessGroup %(project)s
     WSGIScriptAlias / %(wsgi_path)s
+    WSGIPassAuthorization On
 
 </VirtualHost>
 """
